@@ -1,6 +1,6 @@
 # agentic-test-demo
 
-End-to-end Playwright tests for the live site [m4to.com](https://m4to.com) ("Rafael Matovello - Multiverse Portfolio").
+End-to-end Playwright tests for the live site [m4to.com](https://m4to.com) ("Rafael Matovelle - Multiverse Portfolio").
 
 ## Run the tests
 
