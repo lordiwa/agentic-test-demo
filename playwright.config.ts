@@ -28,6 +28,11 @@ export default defineConfig({
     navigationTimeout: 45_000,
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
+    // page.route() does not intercept requests handled by a service worker.
+    // Blocking service workers makes the contact-form "never a real
+    // submission" guarantee structural rather than incidental, even if
+    // m4to.com ever ships a fetch-handling SW.
+    serviceWorkers: 'block',
   },
   projects: [
     {

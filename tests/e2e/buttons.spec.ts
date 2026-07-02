@@ -38,7 +38,7 @@ test.describe('interactive buttons', () => {
     await page.getByRole('button', { name: /send neural message/i }).click();
     await expect(page.getByRole('heading', { name: /neural link communication/i })).toBeVisible();
 
-    await page.getByRole('button', { name: /back/i }).click();
+    await page.getByRole('button', { name: '← Back', exact: true }).click();
     await expect(page.getByRole('heading', { name: 'Rafael Matovelle', level: 1 })).toBeVisible();
     await expect(
       page.getByRole('heading', { name: /neural link communication/i })

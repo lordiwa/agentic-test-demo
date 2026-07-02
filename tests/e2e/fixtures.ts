@@ -10,7 +10,14 @@ import { test as base, expect, type Page } from '@playwright/test';
  */
 async function dismissCookieBannerIfPresent(page: Page) {
   const banner = page.getByRole('button', { name: /accept|got it|agree/i });
-  if (await banner.isVisible({ timeout: 2_000 }).catch(() => false)) {
+  // isVisible() ignores its timeout option and returns immediately, so use
+  // waitFor() to give the banner a real 2s grace window while keeping this
+  // best-effort (no-op if it never appears).
+  const appeared = await banner
+    .waitFor({ state: 'visible', timeout: 2_000 })
+    .then(() => true)
+    .catch(() => false);
+  if (appeared) {
     await banner.click();
   }
 }
