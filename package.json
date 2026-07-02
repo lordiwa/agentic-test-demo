@@ -1,0 +1,22 @@
+{
+  "name": "testing-demo",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "playwright test",
+    "test:changed": "playwright test",
+    "test:all": "playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "typescript": "^6.0.3"
+  }
+}
