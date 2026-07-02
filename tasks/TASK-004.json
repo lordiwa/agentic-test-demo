@@ -1,0 +1,33 @@
+{
+  "key": "TASK-004",
+  "title": "Build Playwright E2E test suite for m4to.com",
+  "description": "Stand up a Playwright test project in this repo and write end-to-end tests against the live site m4to.com. Research the site first to identify its core user flows, then encode each flow as a test. The suite must be runnable locally with a single command.",
+  "acceptance_criteria": [
+    "Playwright is installed and configured in this repo; `npx playwright test` runs the suite.",
+    "Site research identifies m4to.com's core user flows and is reflected in the test plan.",
+    "Each identified core flow has at least one Playwright test exercising it against the live site.",
+    "The full suite passes locally (green run) at hand-off."
+  ],
+  "status": "in_progress",
+  "priority": "high",
+  "labels": [
+    "testing",
+    "playwright",
+    "e2e"
+  ],
+  "verification_tier": "uat-only",
+  "assignee": null,
+  "depends_on": [],
+  "linked_commits": [],
+  "linked_prs": [],
+  "comments": [
+    {
+      "author": "orchestrator",
+      "at": "2026-07-02T10:58:26.865Z",
+      "body": "Created at human direction: skip CI (TASK-001) and the other seeded placeholder tickets; build Playwright tests for m4to.com instead. Tier uat-only — the deliverable is the test suite itself; verification is a green run plus human confirmation of flow coverage."
+    }
+  ],
+  "created_at": "2026-07-02T10:58:26.865Z",
+  "updated_at": "2026-07-02T10:58:26.865Z",
+  "jira_key": null
+}

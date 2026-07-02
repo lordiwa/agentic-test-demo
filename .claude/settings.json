@@ -1,0 +1,21 @@
+{
+  "statusLine": {
+    "type": "command",
+    "command": "node \"C:\\Users\\srpar\\.claude\\plugins\\cache\\hivemind-marketplace\\hivemind\\0.9.0\\context-monitor\\statusline.mjs\""
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "type": "command",
+        "command": "node \"C:\\Users\\srpar\\.claude\\plugins\\cache\\hivemind-marketplace\\hivemind\\0.9.0\\context-monitor\\stop-hook.mjs\""
+      }
+    ],
+    "SessionStart": [
+      {
+        "type": "command",
+        "matcher": "clear|compact",
+        "command": "node \"C:\\Users\\srpar\\.claude\\plugins\\cache\\hivemind-marketplace\\hivemind\\0.9.0\\context-monitor\\session-start.mjs\""
+      }
+    ]
+  }
+}

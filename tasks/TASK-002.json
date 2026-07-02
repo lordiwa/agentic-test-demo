@@ -1,0 +1,29 @@
+{
+  "key": "TASK-002",
+  "title": "Identify trigger source",
+  "description": "Pin down what fires the automation: cron, webhook, queue message, or manual. Trigger choice constrains the whole runtime shape.",
+  "acceptance_criteria": [
+    "Trigger mechanism is documented (cron expression, event topic, etc.).",
+    "Expected invocation frequency is recorded."
+  ],
+  "status": "todo",
+  "priority": "high",
+  "labels": [
+    "seed",
+    "design"
+  ],
+  "assignee": null,
+  "depends_on": [],
+  "linked_commits": [],
+  "linked_prs": [],
+  "comments": [
+    {
+      "author": "backlog-seeder",
+      "at": "2026-07-02T10:54:21.468Z",
+      "body": "Triggered by primary_use_case: automation"
+    }
+  ],
+  "created_at": "2026-07-02T10:54:21.458Z",
+  "updated_at": "2026-07-02T10:54:21.468Z",
+  "jira_key": null
+}

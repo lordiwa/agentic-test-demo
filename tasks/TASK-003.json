@@ -1,0 +1,29 @@
+{
+  "key": "TASK-003",
+  "title": "Add idempotency guard",
+  "description": "Automations re-run. Add the de-duplication mechanism (job id, natural key, etc.) so duplicate firings are no-ops.",
+  "acceptance_criteria": [
+    "Re-running the automation with the same input produces no side effects.",
+    "Idempotency key strategy is documented."
+  ],
+  "status": "todo",
+  "priority": "medium",
+  "labels": [
+    "seed",
+    "reliability"
+  ],
+  "assignee": null,
+  "depends_on": [],
+  "linked_commits": [],
+  "linked_prs": [],
+  "comments": [
+    {
+      "author": "backlog-seeder",
+      "at": "2026-07-02T10:54:21.489Z",
+      "body": "Triggered by primary_use_case: automation"
+    }
+  ],
+  "created_at": "2026-07-02T10:54:21.478Z",
+  "updated_at": "2026-07-02T10:54:21.489Z",
+  "jira_key": null
+}
