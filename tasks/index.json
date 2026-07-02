@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-02T10:58:26.865Z",
+  "generated_at": "2026-07-02T11:50:48.856Z",
   "tasks": [
     {
       "key": "TASK-001",
@@ -22,7 +22,7 @@
     {
       "key": "TASK-004",
       "title": "Build Playwright E2E test suite for m4to.com",
-      "status": "in_progress",
+      "status": "done",
       "priority": "high"
     }
   ]

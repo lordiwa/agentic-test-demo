@@ -8,7 +8,7 @@
     "Each identified core flow has at least one Playwright test exercising it against the live site.",
     "The full suite passes locally (green run) at hand-off."
   ],
-  "status": "in_progress",
+  "status": "done",
   "priority": "high",
   "labels": [
     "testing",
@@ -18,16 +18,36 @@
   "verification_tier": "uat-only",
   "assignee": null,
   "depends_on": [],
-  "linked_commits": [],
+  "linked_commits": [
+    "302c87c",
+    "05e3cb2",
+    "8c2aeda",
+    "e3d07c8"
+  ],
   "linked_prs": [],
   "comments": [
+    {
+      "author": "backlog-seeder",
+      "at": "2026-07-02T10:54:21.449Z",
+      "body": "common starter ticket — applies to every fresh project"
+    },
     {
       "author": "orchestrator",
       "at": "2026-07-02T10:58:26.865Z",
       "body": "Created at human direction: skip CI (TASK-001) and the other seeded placeholder tickets; build Playwright tests for m4to.com instead. Tier uat-only — the deliverable is the test suite itself; verification is a green run plus human confirmation of flow coverage."
+    },
+    {
+      "author": "uat",
+      "at": "2026-07-02T11:50:48.856Z",
+      "body": "UAT script (one step per AC), verdicts reported by the human:\n1. AC1 — run `npx playwright test`; expected: suite executes and reports 8 passed; observed: 8 passed — PASS.\n2. AC2 — open tests/TEST-PLAN.md; expected: documents real site structure (splash gate, SPA routing, randomized persona switcher, EmailJS contact form) with flow→spec mapping; observed: as expected — PASS.\n3. AC3 — inspect tests/e2e/ specs; expected: landing load, three external links, persona switcher + contact-modal Back button, and contact-form test with intercepted EmailJS POST (no real submission possible); observed: as expected — PASS.\n4. AC4 — green run at hand-off on final commit e3d07c8; expected: 8 passed, tsc clean; observed: 8 passed (1.2m), tsc clean — PASS.\nOverall result: PASS (4/4 steps)."
+    },
+    {
+      "author": "orchestrator",
+      "at": "2026-07-02T11:50:48.856Z",
+      "body": "Closed after green review + all-PASS UAT. Researcher mapped m4to.com (client-rendered SPA, 'Rafael Matovello - Multiverse Portfolio'). Developer scaffolded Playwright+TS, ran live DOM discovery, and delivered 8 tests across landing/navigation/buttons/contact-form; contact form is asserted boundary-only with all non-GET requests intercepted (EmailJS backend) so no real email can be sent. Reviewer independently reproduced the green run and assessed all 4 ACs MET; the MEDIUM finding (serviceWorkers: 'block' hardening) plus two locator nits were fixed in e3d07c8. Knowledge-graph decision→task edges skipped: src/knowledge-graph.js does not exist in this project."
     }
   ],
   "created_at": "2026-07-02T10:58:26.865Z",
-  "updated_at": "2026-07-02T10:58:26.865Z",
+  "updated_at": "2026-07-02T11:50:48.856Z",
   "jira_key": null
 }

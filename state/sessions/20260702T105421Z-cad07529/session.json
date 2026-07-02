@@ -1,16 +1,13 @@
 {
   "schema_version": 2,
   "session_id": "20260702T105421Z-cad07529",
-  "lifecycle_state": "active",
-  "updated_at": "2026-07-02T11:04:00.000Z",
-  "active_task": "TASK-004",
-  "workflow_step": "implementation",
-  "next_action": "Developer (IMPL mode, uat-only tier) scaffolds Playwright, runs live DOM discovery against https://m4to.com, writes E2E tests per the research plan, gets a green run. Then reviewer, then UAT with the human.",
-  "handoff_summary": "TASK-004 (Playwright E2E suite for m4to.com) in progress. Research complete: site is a live client-side-rendered SPA titled 'Rafael Matovello - Multiverse Portfolio'; WebFetch sees only an empty shell, so selectors must come from a live JS-executing discovery pass. Plan: landing-page load test, nav/link flows, button interactions, contact form asserted up to the submit boundary only (intercept network if it posts to a real backend). Low worker count against the live site. Developer spawn is next.",
-  "open_questions": [
-    "Are /about, /contact real routes or in-page anchors? (catch-all SPA fallback returns identical shell for all paths — check HTTP status codes during discovery)",
-    "Does the contact form post to a live backend (must intercept) or is it mailto:/client-only?"
-  ],
+  "lifecycle_state": "ended",
+  "updated_at": "2026-07-02T11:50:48.856Z",
+  "active_task": null,
+  "workflow_step": "done",
+  "next_action": null,
+  "handoff_summary": "Session ended. TASK-004 (Playwright E2E suite for m4to.com) completed the full loop: research → implementation → review → review fixes → all-PASS human UAT → closed. Suite: 8 tests green in tests/e2e/ (landing, navigation, buttons, contact-form; EmailJS submission always intercepted, serviceWorkers blocked). Commits 302c87c, 05e3cb2, 8c2aeda, e3d07c8 on main; remote is https://github.com/lordiwa/agentic-test-demo.git. Seeded placeholder tickets TASK-001..003 remain todo, deprioritized at human direction.",
+  "open_questions": [],
   "blockers": [],
   "decisions": [
     {
@@ -20,6 +17,18 @@
     {
       "at": "2026-07-02T11:04:00.000Z",
       "decision": "Contact-form tests are boundary-only: never trigger a real submission; use route interception if the form posts to a backend."
+    },
+    {
+      "at": "2026-07-02T11:40:00.000Z",
+      "decision": "git init run locally (main) so developer commits conform to repo etiquette; remote https://github.com/lordiwa/agentic-test-demo.git provided by human at UAT close-out."
+    },
+    {
+      "at": "2026-07-02T11:40:00.000Z",
+      "decision": "Persona-switcher content is randomized per visit; assertion checks default-content disappearance instead of pinned copy. Easter-egg mini-games deliberately untested per USE-CASES.md."
+    },
+    {
+      "at": "2026-07-02T11:50:48.856Z",
+      "decision": "Knowledge-graph decision→task edge recording skipped: src/knowledge-graph.js does not exist in this project."
     }
   ],
   "subagent_results": [
@@ -27,7 +36,25 @@
       "agent": "researcher",
       "task": "TASK-004",
       "at": "2026-07-02T11:04:00.000Z",
-      "summary": "m4to.com is live: 'Rafael Matovello - Multiverse Portfolio', a client-side-rendered SPA. All paths (incl. /robots.txt) return an identical minimal HTML shell — WebFetch cannot see the DOM, so no selectors could be pre-enumerated; developer must run a live Playwright discovery pass first. Test plan: (1) landing load — title /Rafael Matovello/i + hydrated heading visible; (2) nav links via getByRole with destination-visibility assertions (routes may be in-page anchors); (3) buttons incl. popup handling for target=_blank; (4) contact form filled with obvious test data, asserted up to submit boundary only — intercept with page.route() if it posts to a real service. Hazards: hydration waits needed (prefer auto-retrying toBeVisible over networkidle-only), possible consent banner, catch-all fallback masking 404s, live-site rate limits (run workers:1-2). Config: baseURL https://m4to.com, generous timeouts. Site not indexed anywhere; no Wayback snapshot available."
+      "summary": "m4to.com is live: 'Rafael Matovello - Multiverse Portfolio', a client-side-rendered SPA. All paths return an identical empty shell — developer must run live Playwright discovery first. Plan: landing load, nav links via getByRole, buttons incl. popup handling, contact form boundary-only with page.route() interception. Hazards: hydration waits, possible consent banner, catch-all fallback masking 404s, live-site rate limits (workers 1-2). Config: baseURL https://m4to.com."
+    },
+    {
+      "agent": "developer",
+      "task": "TASK-004",
+      "at": "2026-07-02T11:40:00.000Z",
+      "summary": "IMPL complete. Discovery: SPA, empty shell for all paths; splash gate 'START MULTIVERSE MACHINE'; persona switcher randomized per visit; external links target=_blank; contact form POSTs to api.emailjs.com — all tests intercept non-GET requests. Specs in tests/e2e/ + tests/TEST-PLAN.md. 8 passed (1.3m), green twice. Commits 302c87c, 05e3cb2, 8c2aeda."
+    },
+    {
+      "agent": "reviewer",
+      "task": "TASK-004",
+      "at": "2026-07-02T11:50:00.000Z",
+      "summary": "Independently reproduced green run (8/8). All 4 ACs MET. Only HIGH was the then-missing uat comment (process gate). MEDIUM serviceWorkers:'block' + locator nits requested."
+    },
+    {
+      "agent": "developer",
+      "task": "TASK-004",
+      "at": "2026-07-02T11:50:48.856Z",
+      "summary": "Review fixes landed in e3d07c8: serviceWorkers:'block' in playwright.config.ts, real 2s banner grace via waitFor, exact '← Back' locator. Re-verified: 8 passed (1.2m), tsc clean."
     }
   ],
   "pending_human_confirmation": null
